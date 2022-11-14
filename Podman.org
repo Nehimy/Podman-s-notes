@@ -213,12 +213,30 @@ cat /etc/passwd
 cat: Es para leer contenido.
 
 ** 5. Si es necesrio elimiar las llaves ssh
-Esto es para cuando una ip ya esta repetida tiene la misma llave ssh
+Esto es para cuando una ip ya esta repetida tiene la misma llave ssh.
 #+begin_src shell
 nano /home/ney/.ssh/known_hosts
 #+end_src shell
 
 ** 6. Revisar si tengo el archivo ssh en mi maquina
+Este comando es ideal para ver si tenenos el la carpeta ssh
+desde donde vamos a copiar la llave ssh.
 #+begin_src shell
 ls .ssh/
+#+end_src shell
+
+** 7.  Comando para copiar llave SSH
+ Desde la maquina de donde queremos copiar la llave ssh escribimos:
+ #+begin_src shell
+  ssh-copy-id user@ip
+ #+end_src shell
+
+** 8. Ver archivo dentro de .ssh/
+Podemos revisar la llave ssh se copio viendo el archivo en la maquina y
+en el contenedor en este caso.
+
+#+begin_src shell
+ cat .ssh/id_rsa.pub
+
+ /home/ney/.ssh cat id_rsa.pub
 #+end_src shell
