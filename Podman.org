@@ -1,0 +1,224 @@
+* Podman
+
+** ¿Qué es Podman?
+Podman es una herramienta sin demonio, diseñada para facilitar la búsqueda, la ejecución, la creación, la compartición y el despliegue de aplicaciones mediante contenedores e imágenes de contenedores de la Iniciativa de Contenedores Abiertos (OCI).
+
+*** Imagen: Es un conjuto de aplicaciónes compiladas para instalar.
+*** Contenedor: Es la imagen instalada
+
+** run:
+Ejecuta un proceso en un nuevo contenedor. Podman run inicia un proceso con su propio sistema de archivos, su propia red y su propio árbol de procesos aislado.
+
+Run crea un contenedor.
+
+** images:
+Enumera las imágenes en el almacenamiento local.
+
+** ps:
+Usado para ver la lista de contenedores.
+
+** start:
+Iniciar uno o más contenedores.
+
+** stop:
+Detener uno o varios contenedores.
+
+** exec:
+Ejecuta un proceso en un contenedor en funcionamiento.
+
+** rm:
+Eliminar o suprimir uno o más contenedores.
+
+** rmi:
+Elimina una o varias imágenes del almacenamiento local.
+
+** --name:
+Asigna un nombre al contenedor.
+
+El operador puede identificar un contenedor de tres maneras:
+
+*** Identificador largo UUID ("f78375b1c487e03c9438c729345e54db9d20cfa2ac1fc3494b6eb60872e74778");
+*** Identificador corto UUID ("f78375b1c487");
+*** Nombre ("jonah").
+
+Podman genera un UUID para cada contenedor, y si no se asigna un nombre al contenedor con *--name* entonces generará un nombre de cadena aleatorio. El nombre es útil en cualquier lugar donde se necesite identificar un contenedor. Esto funciona tanto para los contenedores de fondo como para los de primer plano.
+** --volume:
+Los volúmenes también pueden especificar un origen, ya sea un directorio en el host o el nombre de un volumen con nombre. Si no se especifica el origen, el volumen se creará como un volumen con nombre anónimo y generado aleatoriamente, y se eliminará cuando se elimine el <<contenedor|pod>> mediante la bandera --rm o el comando podman rm --volumes.
+
+** network:
+Gestiona las redes de Podman.
+
+** curl:
+Es una herramienta para transferir datos desde o hacia un servidor.
+
+** container:
+Administrar contenedores.
+
+** podman ps:
+Se usa para enumerar la creación y ejecución de contenedores.
+Lista los contenedores.
+
+** podman ps -a:
+Muestra todos los contenedores.
+
+** podman exec -it "id" bash:
+Ejecuta bash dentro de el contenedor.
+
+* Pasos importantes:
+
+** 1. Descargar imagen
+#+begin_src
+ sudo podman pull "imagen"
+#+end_src
+
+** 2. Eliminar imagen
+#+begin_src
+ sudo podman rmi "id"
+#+end_src
+
+** 3. Eliminar contenedores
+#+begin_src
+ sudo podman rm "id"
+#+end_src
+
+** 3.2  Crear contenedor
+
+#+begin_src shell
+sudo podman run -it "imagen"
+#+end_src shell
+
+** 4. Ver contenedores
+#+begin_src
+ sudo podman ps -a
+#+end_src
+Muestra todos los contenedores.
+
+** 5.  Ver contenedores encendidos
+#+begin_src
+ sudo podman ps
+#+end_src
+
+** 6. Encender un contendor
+#+begin_src
+ sudo podman start "container name"
+#+end_src
+
+** 7. Iniciar el contenedor
+#+begin_src
+ sudo podman exec -it "id or name" bash
+#+end_src
+
+** 8. Atualizar
+#+begin_src
+ apt update
+#+end_src
+** 9.  Instalar  nginx
+#+begin_src
+ apt install nginx
+#+end_src
+
+** 10. Ver la versión de nginx
+#+begin_src
+ nginx -v
+#+end_src
+
+** 11. Comando para prender nginx
+#+begin_src
+ service nginx start
+#+end_src
+
+** 12. Ver el estado de nginx
+#+begin_src shell
+ service nginx status
+#+end_src shell
+
+** 13. intalando ssh server
+#+begin_src
+ apt install openssh-server
+#+end_src
+
+** 14. Como ver la ip del contendor
+#+begin_src
+ ip a
+#+end_src
+** 14.1 Installar ip en debian
+#+begin_src
+apt install iproute2
+#+end_src
+
+** Añadir un usuario con la terminal a linux
+#+begin_src
+ adduser "name"
+#+end_src
+
+** Conectarce a por ssh
+#+begin_src shell
+ ssh name@ip
+#+end_src
+
+~Fuse: Hace un punto de montaje ~~
+** Punto de montaje ej.
+Cuando conecto un USB
+
+* ¿Para qué voy a usar Fuce?
+Para comunicarme con un protocolo,  de esta forma voy a  simular que es un disco. Osea
+en lugar de un sistema de archivos se va a comunicar con un API.
+
+Fuce monta el SSH crea un punto de montaje que simula ser un sistema de archivos,
+hace que el SSH funciones como si fuera un USB que esta conectado a mi maquina.
+
+~SSH:Seguro shell, SSH es un protocolo de comunicación.~
+
+~Shell: es un interprete de comandos (bash).
+
+~Terminal:  Ejecutar una shell y mostrarlo en pantalla es una terminal.~
+
+~Sistema de archivos: Es para manejar archivos en la pc.~
+
+**** Importante: Conectarse a una shell (interprete) montarlo y poder usarlo para trabajar eso es una terminal.
+
+
+
+* ¿Qué hizo @kj?
+** Monta una ruta de mi contenedor (/var/www//) en mi máquina local.
+
+~Nota: El punto de montaje es la carpeta en la máquina~
+
+* Pasos para montar una ruta
+
+** 1. Levantar ssh
+Levantar el ssh es como decir que este ensendido.
+#+begin_src shell
+service ssh start
+#+end_src shell
+
+** 2. Ver el estado del ssh
+Este comando es usado para saver si el ssh esta "of" o "on".
+#+begin_src shell
+service ssh status
+#+end_src shell
+
+** 3. obtener la ip
+Con este comando podemos ver la ip de la maquina.
+#+begin_src shell
+ip a
+#+end_src shell
+
+** 4. Ver todos los usuarios
+En este caso vemos los usuarios del contenedor.
+#+begin_src shell
+cat /etc/passwd
+#+end_src shell
+
+cat: Es para leer contenido.
+
+** 5. Si es necesrio elimiar las llaves ssh
+Esto es para cuando una ip ya esta repetida tiene la misma llave ssh
+#+begin_src shell
+nano /home/ney/.ssh/known_hosts
+#+end_src shell
+
+** 6. Revisar si tengo el archivo ssh en mi maquina
+#+begin_src shell
+ls .ssh/
+#+end_src shell
