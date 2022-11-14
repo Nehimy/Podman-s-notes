@@ -236,7 +236,21 @@ Podemos revisar la llave ssh se copio viendo el archivo en la maquina y
 en el contenedor en este caso.
 
 #+begin_src shell
+ #Desde la terminal de la maquina
  cat .ssh/id_rsa.pub
 
- /home/ney/.ssh cat id_rsa.pub
+ #Desde el contenedor
+
+ cd /home/ney/
+ cd.ssh/
+ cat authorized_keys
 #+end_src shell
+
+** 9. Saber si ya puedo conectarte directamente
+ En teoria, si tengo la llave ssh puedo conectarme directamente
+ al contenedor. Si esto es así podré conectarme sin que me
+ pida contraseña nuevamente.
+
+ #+begin_src shell
+  name@"ip del contenedor"
+ #+end_src shell
