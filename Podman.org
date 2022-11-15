@@ -82,10 +82,16 @@ Ejecuta bash dentro de el contenedor.
 #+end_src
 
 ** 3.2  Crear contenedor
-
 #+begin_src shell
 sudo podman run -it "imagen"
 #+end_src shell
+
+** 3.3 Renombra contenedor
+Con este comando podemos renombrar el conedor
+que ya creamos.
+#+begin_src shell
+ sudo podman rename "old name" "new name"
+#+end_srcs shell
 
 ** 4. Ver contenedores
 #+begin_src
@@ -254,3 +260,5 @@ en el contenedor en este caso.
  #+begin_src shell
   name@"ip del contenedor"
  #+end_src shell
+
+* Pasos para el Fuse
