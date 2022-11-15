@@ -7,9 +7,10 @@ Podman es una herramienta sin demonio, diseñada para facilitar la búsqueda, la
 *** Contenedor: Es la imagen instalada
 
 ** run:
-Ejecuta un proceso en un nuevo contenedor. Podman run inicia un proceso con su propio sistema de archivos, su propia red y su propio árbol de procesos aislado.
-
 Run crea un contenedor.
+
+**  create:
+Crea un contenedor pero no lo inica.
 
 ** images:
 Enumera las imágenes en el almacenamiento local.
@@ -34,6 +35,7 @@ Elimina una o varias imágenes del almacenamiento local.
 
 ** --name:
 Asigna un nombre al contenedor.
+Este comando va despues de "create".
 
 El operador puede identificar un contenedor de tres maneras:
 
@@ -84,11 +86,15 @@ Ejecuta bash dentro de el contenedor.
 ** 3.2  Crear contenedor
 #+begin_src shell
 sudo podman run -it "imagen"
+# otra forma dandole un nombre
+sudo podman run --name "name" -it "distro"
 #+end_src shell
 
 ** 3.3 Renombra contenedor
 Con este comando podemos renombrar el conedor
 que ya creamos.
+
+También pdemos renombrar unsando el ID del contenedor.
 #+begin_src shell
  sudo podman rename "old name" "new name"
 #+end_srcs shell
@@ -105,7 +111,7 @@ Muestra todos los contenedores.
 #+end_src
 
 ** 6. Encender un contendor
-#+begin_src
+#+begin_src shell
  sudo podman start "container name"
 #+end_src
 
