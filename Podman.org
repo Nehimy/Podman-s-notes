@@ -233,7 +233,10 @@ cat /etc/passwd
 cat: Es para leer contenido.
 
 ** 5. Si es necesrio elimiar las llaves ssh
-Esto es para cuando una ip ya esta repetida tiene la misma llave ssh.
+Esto es para cuando una ip ya esta repetida osea
+tiene la misma llave ssh.
+
+Borrar la llave del lado de la maquina local.
 #+begin_src shell
 nano /home/ney/.ssh/known_hosts
 #+end_src shell
