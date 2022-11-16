@@ -215,6 +215,14 @@ Con este comando podemos ver la ip de la maquina.
 #+begin_src shell
 ip a
 #+end_src shell
+** 3.1 instalar paquete para ver la ip
+#+begin_src shell
+apt install iproute2
+#otra forma para ver la ip
+ip addr show
+#para ver solo la ip
+hostname -iI
+#+end_src
 
 ** 4. Ver todos los usuarios
 En este caso vemos los usuarios del contenedor.
