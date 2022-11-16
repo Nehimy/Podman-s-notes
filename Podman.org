@@ -66,7 +66,7 @@ Muestra todos los contenedores.
 ** podman exec -it "id" bash:
 Ejecuta bash dentro de el contenedor.
 
-* Pasos importantes:
+* Contenedor:
 
 ** 1. Descargar imagen
 #+begin_src
@@ -120,10 +120,15 @@ Muestra todos los contenedores.
  sudo podman exec -it "id or name" bash
 #+end_src
 
+* Lo primero que hay que hacer al entar al contenedor
+
 ** 8. Atualizar
 #+begin_src
  apt update
 #+end_src
+
+* Nginx
+
 ** 9.  Instalar  nginx
 #+begin_src
  apt install nginx
@@ -144,10 +149,21 @@ Muestra todos los contenedores.
  service nginx status
 #+end_src shell
 
+* SSH
+
 ** 13. intalando ssh server
 #+begin_src
  apt install openssh-server
 #+end_src
+
+** Conectarce a por ssh
+Desde fuera del contenedor puedo conectarme
+a este de la siguiente forma.
+#+begin_src shell
+ ssh name@ip
+#+end_src
+
+* Install paquete para ver la ip
 
 ** 14. Como ver la ip del contendor
 #+begin_src
@@ -158,19 +174,12 @@ Muestra todos los contenedores.
 apt install iproute2
 #+end_src
 
+* Crear usuario en la terminal
+
 ** Añadir un usuario con la terminal a linux
 #+begin_src
  adduser "name"
 #+end_src
-
-** Conectarce a por ssh
-#+begin_src shell
- ssh name@ip
-#+end_src
-
-~Fuse: Hace un punto de montaje ~~
-** Punto de montaje ej.
-Cuando conecto un USB
 
 * ¿Para qué voy a usar Fuce?
 Para comunicarme con un protocolo,  de esta forma voy a  simular que es un disco. Osea
@@ -179,24 +188,23 @@ en lugar de un sistema de archivos se va a comunicar con un API.
 Fuce monta el SSH crea un punto de montaje que simula ser un sistema de archivos,
 hace que el SSH funciones como si fuera un USB que esta conectado a mi maquina.
 
-~SSH:Seguro shell, SSH es un protocolo de comunicación.~
+~SSH:~ Seguro shell, SSH es un protocolo de comunicación.
+~Shell:~ Es un interprete de comandos (bash).
 
-~Shell: es un interprete de comandos (bash).
+~Terminal:~  Ejecutar una shell y mostrarlo en pantalla es una terminal.
+~Sistema de archivos:~ Es para manejar archivos en la pc.
+~Importante:~ Conectarse a una shell (interprete) montarlo y poder usarlo para trabajar eso es una terminal.
 
-~Terminal:  Ejecutar una shell y mostrarlo en pantalla es una terminal.~
-
-~Sistema de archivos: Es para manejar archivos en la pc.~
-
-**** Importante: Conectarse a una shell (interprete) montarlo y poder usarlo para trabajar eso es una terminal.
-
+~Fuse:~ Hace un punto de montaje.
+~Punto de montaje ej.:~ Cuando conecto un USB
 
 
 * ¿Qué hizo @kj?
-** Monta una ruta de mi contenedor (/var/www//) en mi máquina local.
+ Monta una ruta de mi contenedor (/var/www//) en mi máquina local.
 
 ~Nota: El punto de montaje es la carpeta en la máquina~
 
-* Pasos para montar una ruta
+* Pasos para adseder directamente a un contenedor
 
 ** 1. Levantar ssh
 Levantar el ssh es como decir que este ensendido.
