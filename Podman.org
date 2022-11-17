@@ -163,6 +163,11 @@ a este de la siguiente forma.
  ssh name@ip
 #+end_src
 
+* Nano
+#+begin_src shell
+  apt install nano
+#+end_src
+
 * Install paquete para ver la ip
 
 ** 14. Como ver la ip del contendor
