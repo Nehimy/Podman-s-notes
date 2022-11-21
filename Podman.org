@@ -292,3 +292,11 @@ en el contenedor en este caso.
  #+end_src shell
 
 * Pasos para el Fuse
+
+Lo primer es instalar "sshfs" del lado de tu maquina local.
+** Instale SSHFS
+#+begin_src shell
+apt install sshfs
+#En arch se instala así
+sudo pacman -S sshfs
+#+end_src shell
