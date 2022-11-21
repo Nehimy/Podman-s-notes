@@ -291,7 +291,7 @@ en el contenedor en este caso.
   name@"ip del contenedor"
  #+end_src shell
 
-* Pasos para el Fuse
+* Pasos para Fuse
 
 Lo primer es instalar "sshfs" del lado de tu maquina local.
 ** Instale SSHFS
@@ -300,3 +300,23 @@ apt install sshfs
 #En arch se instala así
 sudo pacman -S sshfs
 #+end_src shell
+
+**  Montar
+Para montar un directorio remoto, el usuario SSH tiene que poder acceder a él.
+Con el siguiente comando montamos el contenedor en nuestra ruta local.
+
+#+begin_src shell
+  sshfs user@ip:/container/route/ /rout/local/de la pc/
+#+end_src
+
+** Dar permisos
+Para crear, editar etc desde el lado de la maquina local tenemos que dar permisos
+desde el contenedor.
+
+Hay otras formas de dar permios ; pero esta es la que más recuerdo, no es obtima
+pero funciona.
+#+begin_src shell
+  chmod 777 archivo
+#otra forma es colocando la ruta del archivo
+  chmod 777 laruta/del/archivo
+#+end_src
